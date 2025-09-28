@@ -6,7 +6,7 @@ import { useLoginController } from "./useLoginController";
 
 
 export function Login() {
-  const { handleSubmit, register, errors } = useLoginController();
+  const { handleSubmit, register, errors, isPending } = useLoginController();
 
   return (
   <>
@@ -24,7 +24,7 @@ export function Login() {
       <Input {...register('email')} type="email" error={errors.email?.message} placeholder="email" />
       <Input {...register('password')} type="password" error={errors.password?.message} placeholder="senha"/>
 
-      <Button type="submit" className="mt-2">Entrar</Button>
+      <Button isPending={isPending} type="submit" className="mt-2">Entrar</Button>
     </form>
   </>
   )

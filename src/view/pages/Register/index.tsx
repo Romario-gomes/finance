@@ -4,7 +4,7 @@ import { Input } from "../../components/Input";
 import { UseRegisterController } from "./useRegisterController";
 
 export function Register() {
-  const { errors, handleSubmit, register } = UseRegisterController();
+  const { errors, handleSubmit, register, isPending } = UseRegisterController();
 
 
   return(
@@ -24,7 +24,7 @@ export function Register() {
       <Input  {...register('email')}  type="email" error={errors.email?.message} placeholder="email" />
       <Input  {...register('password')}  type="password" error={errors.password?.message} placeholder="senha"/>
 
-      <Button type="submit" className="mt-2">Criar conta</Button>
+      <Button isPending={isPending} type="submit" className="mt-2">Criar conta</Button>
     </form>
   </>
   )
