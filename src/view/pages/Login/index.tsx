@@ -21,7 +21,7 @@ export function Login() {
     </header>
 
     <form onSubmit={handleSubmit} className="mt-[60px] flex flex-col gap-4">
-      <Input {...register('email')} type="email" error={errors.email?.message} placeholder="email" />
+      <Input {...register('email')} type="email" error={errors.email?.message} placeholder="E-mail" />
       <Input {...register('password')} type="password" error={errors.password?.message} placeholder="senha"/>
 
       <Button isPending={isPending} type="submit" className="mt-2">Entrar</Button>
