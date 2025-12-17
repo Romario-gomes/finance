@@ -10,7 +10,7 @@ import { Spinner } from '../../../../components/Spinner';
 import { PlusIcon } from '@radix-ui/react-icons';
 
 export function Accounts() {
-  const { sliderState, setSliderState, windowWidth, areValuesVisible, toggleValueVisibility, isLoading, accounts } = useAccountsController();
+  const { sliderState, setSliderState, windowWidth, areValuesVisible, toggleValueVisibility, isLoading, accounts, openNewAccountModal } = useAccountsController();
 
   return (
     <div className="bg-teal-900 rounded-2xl w-full h-full md:p-10 px-4 py-8 flex flex-col ">
@@ -45,7 +45,7 @@ export function Accounts() {
                 </div>
 
 
-                <button 
+                <button onClick={openNewAccountModal} 
                 className='mt-4 h-52 rounded-2xl border-2 border-dashed border-teal-600 flex flex-col items-center justify-center gap-4 text-white'>
                   <div className='w-11 h-11 rounded-full border-2 border-dashed border-white flex items-center justify-center'><PlusIcon  className='h-6 w-6'/></div>
                   <span className='tracking-[-0.5px] font-medium display block w-32 text-center'>Cadastre uma nova conta</span>
