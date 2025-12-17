@@ -1,7 +1,8 @@
 import { useAuth } from "../../../app/hooks/useAuth";
-import { Button } from "../../components/Button";
 import { DashboardProvider } from "../../components/DashboardContext";
 import { Logo } from "../../components/Logo";
+import { Modal } from "../../components/Modal";
+
 import { UserMenu } from "../../components/UserMenu";
 import { Accounts } from "./components/Accounts";
 import { Fab } from "./components/Fab";
@@ -28,6 +29,7 @@ export function Dashboard() {
         </main>
 
         <Fab />
+        
 
       </div>
     </DashboardProvider>

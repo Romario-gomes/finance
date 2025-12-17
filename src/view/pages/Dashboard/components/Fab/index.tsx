@@ -16,7 +16,7 @@ export function Fab() {
       </DropdownMenu.Trigger>
       <DropdownMenu.Content className="mr-2">
         <DropdownMenu.Item className="gap-2">
-          <CategoryIcon type="expense" />
+          <CategoryIcon type="expense" />1
           Nova Despesa
         </DropdownMenu.Item>
 
