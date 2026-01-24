@@ -11,6 +11,8 @@ import { cn } from "../../app/utils/cn";
 import { useState } from "react";
 
 interface SelectProps {
+  onChange?(value: string): void;
+  value?: string;
   className?: string;
   error?: string;
   placeholder?: string;
@@ -21,19 +23,20 @@ interface SelectProps {
 }
 
 
-export function Select({ className, error, placeholder, options }: SelectProps) {
-  const [selectedValue, setSelectecValue] = useState('');
+export function Select({ className, error, placeholder, options, value, onChange }: SelectProps) {
+  const [selectedValue, setSelectecValue] = useState(value);
 
 
   function handleSelect(value: string) {
     setSelectecValue(value);
+    onChange?.(value);
   }
 
   return (
     <div>
       <div className="relative">
         <label className={cn("absolute top-1/2 -translate-y-1/2 z-10 left-3 text-gray-700 pointer-events-none", selectedValue && 'text-xs left-[13px] top-2 transition-all translate-y-0')}>{placeholder}</label>
-        <RdxSelect.Root onValueChange={handleSelect}>
+        <RdxSelect.Root onValueChange={handleSelect} value={value} >
           <RdxSelect.Trigger
             className={cn("rbg-white  w-full rounded-lg border border-gray-500 px-3 h-[52px] text-gray-800  focus:border-gray-800 transition-all outline-none text-left relative pt-4",
               className,

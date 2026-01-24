@@ -10,7 +10,7 @@ import { Spinner } from '../../../../components/Spinner';
 import { PlusIcon } from '@radix-ui/react-icons';
 
 export function Accounts() {
-  const { sliderState, setSliderState, windowWidth, areValuesVisible, toggleValueVisibility, isLoading, accounts, openNewAccountModal } = useAccountsController();
+  const { sliderState, setSliderState, windowWidth, areValuesVisible, toggleValueVisibility, isLoading, accounts, openNewAccountModal, currentBalance } = useAccountsController();
 
   return (
     <div className="bg-teal-900 rounded-2xl w-full h-full md:p-10 px-4 py-8 flex flex-col ">
@@ -30,7 +30,7 @@ export function Accounts() {
               <strong className={
                 cn("text-2xl tracking-[-1px] text-white",
                   !areValuesVisible && 'blur-md'
-                )}>{formatCurrency(1000)}</strong>
+                )}>{formatCurrency(currentBalance)}</strong>
               <button className="w-8 h-8 flex items-center justify-center" onClick={toggleValueVisibility} >
                 <EyeIcon open={!areValuesVisible} />
               </button>
@@ -45,9 +45,9 @@ export function Accounts() {
                 </div>
 
 
-                <button onClick={openNewAccountModal} 
-                className='mt-4 h-52 rounded-2xl border-2 border-dashed border-teal-600 flex flex-col items-center justify-center gap-4 text-white'>
-                  <div className='w-11 h-11 rounded-full border-2 border-dashed border-white flex items-center justify-center'><PlusIcon  className='h-6 w-6'/></div>
+                <button onClick={openNewAccountModal}
+                  className='mt-4 h-52 rounded-2xl border-2 border-dashed border-teal-600 flex flex-col items-center justify-center gap-4 text-white'>
+                  <div className='w-11 h-11 rounded-full border-2 border-dashed border-white flex items-center justify-center'><PlusIcon className='h-6 w-6' /></div>
                   <span className='tracking-[-0.5px] font-medium display block w-32 text-center'>Cadastre uma nova conta</span>
                 </button>
               </>
@@ -69,9 +69,10 @@ export function Accounts() {
                     <strong className="text-white tracking-[-1px] text-lg">Minhas contas</strong>
                     <SliderNavitagion isBeginning={sliderState.isBeginning} isEnd={sliderState.isEnd} />
                   </div>
-                  <SwiperSlide><AccountCard color="#7950F2" type="CASH" name="Nubank" balance={1000.23} /></SwiperSlide>
-                  <SwiperSlide><AccountCard color="#7950F2" type="INVESTMENT" name="XP" balance={1000.23} /></SwiperSlide>
-                  <SwiperSlide><AccountCard color="#0f0" type="CASH" name="Carteira" balance={1000.23} /></SwiperSlide>
+
+                  {accounts.map(account => (
+                    <SwiperSlide><AccountCard data={account}/></SwiperSlide>
+                  ))}
                 </Swiper>
               </div>
             )}

@@ -7,11 +7,11 @@ import { Modal } from "../../../../components/Modal";
 import { Select } from "../../../../components/Select";
 import { useNewAccountModalController } from "./useNewAccountModalController";
 
-export function NewAccountModal() {
-  const { closeNewAccountModal, isNewAccountModalOpen, errors, handleSubmit, register, control } = useNewAccountModalController();
+export function EditAccountModal() {
+  const { closeEditAccountModal, isEditAccountModalOpen, errors, handleSubmit, register, control } = useNewAccountModalController();
 
   return (
-    <Modal title="Nova Conta" open={isNewAccountModalOpen} onClose={closeNewAccountModal}>
+    <Modal title="Editar Conta" open={isEditAccountModalOpen} onClose={closeEditAccountModal}>
       <form onSubmit={handleSubmit}>
         <div className="">
           <span className="text-gray-600 tracking-[-0.5px] text-sm">Saldo</span>
